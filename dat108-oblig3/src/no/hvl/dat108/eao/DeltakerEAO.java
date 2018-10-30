@@ -20,7 +20,6 @@ public class DeltakerEAO {
 
 	public void leggTil(Deltaker d) {
 			em.persist(d);
-		
 	}
 	
 }
