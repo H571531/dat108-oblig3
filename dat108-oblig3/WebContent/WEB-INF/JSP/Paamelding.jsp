@@ -20,27 +20,27 @@
 			<div class="pure-control-group">
 				<label for="fornavn">Fornavn:</label> <input id="fornavn" type="text"
 					name="fornavn" value="${skjema.fornavn}" /> 
-					<div class="feil">${skjema.fornavnFeilmelding}</div>
+					<p id="fornavnServerFeil" class="feil">${skjema.fornavnFeilmelding}</p>
 					
-					<p id="fornavnFeil" class="gjemt feil">Ugyldig fornavn!(k)</p>
+					<p id="fornavnFeil" class="gjemt feil">Ugyldig fornavn!</p>
 					
 			</div>
 			<div class="pure-control-group">
 				<label for="etternavn">Etternavn:</label> <input id="etternavn" type="text"
 					name="etternavn" value="${skjema.etternavn}" /> 
-					<p class="feil">${skjema.etternavnFeilmelding }</p>
+					<p id="etternavnServerFeil" class="feil">${skjema.etternavnFeilmelding }</p>
 					<p id="etternavnFeil" class="gjemt feil">Ugyldig etternavn!</p>
 			</div>
 			<div class="pure-control-group">
 				<label for="mobil">Mobil (8 siffer):</label> <input id="mobil" type="text"
 					name="mobil" value="${skjema.mobil}" /> 
-					<p class="feil">${skjema.mobilFeilmelding}</p>
+					<p id="mobilServerFeil" class="feil">${skjema.mobilFeilmelding}</p>
 					<p id="mobilFeil" class="gjemt feil">Ugyldig mobil!</p>
 			</div>
 			<div class="pure-control-group">
 				<label for="passord">Passord:</label> <input id="passord" type="password"
 					name="passord" value="" /> 
-					<p class="feil">${skjema.passordFeilmelding}</p>
+					<p id="passordServerFeil" class="feil">${skjema.passordFeilmelding}</p>
 					<p id="passordFeil" class="gjemt feil">Ugyldig passord!</p>
 					<p class="feil" id="passordTilbakemelding"></p>
 			</div>
@@ -48,14 +48,14 @@
 				<label for="passordRepetert">Passord repetert:</label> <input id="passordRepetert"
 					type="password" name="passordRepetert"
 					value="" /> 
-					<p class="feil">${skjema.passordRepetertFeilmelding}</p>
+					<p id="passordRepetertServerFeil" class="feil">${skjema.passordRepetertFeilmelding}</p>
 					<p id="passordRepetertFeil" class="gjemt feil">Passord må være like!</p>
 			</div>
 			<div class="pure-control-group">
-				<label for="kjonn">Kjønn:</label> <input id="kjonn" type="radio" name="kjonn"
+				<label for="kjonn">Kjønn:</label> <input id="kjonnM" type="radio" name="kjonn"
 					value="m"/>mann
-				<input type="radio" name="kjonn" value="k"/>kvinne
-				<p class="feil">${skjema.kjonnFeilmelding}</p>
+				<input id="kjonnK" type="radio" name="kjonn" value="k"/>kvinne
+				<p id="kjonnServerFeil" class="feil">${skjema.kjonnFeilmelding}</p>
 				<p id="kjonnFeil" class="gjemt feil">Må velge kjønn!</p>
 			</div>
 			<div class="pure-controls">
