@@ -34,32 +34,32 @@ function validerFelt(felt){
 		if(!(passordRepetert.value === passord.value)){
 			document.getElementById("passordRepetertFeil").classList.remove("gjemt");
 			document.getElementById(felt).classList.add("ugyldig");
+			document.getElementById("passordRepetertServerFeil").classList.remove("gjemt");
 			return false;
 		} else{
 			document.getElementById("passordRepetertFeil").classList.add("gjemt");
 			document.getElementById(felt).classList.remove("ugyldig");
+			document.getElementById("passordRepetertServerFeil").classList.add("gjemt");
 			return true;
 		}
 		//Egen håndtering for om kjønn er haket av
-	} else if(felt === "kjonn"){
-		let kjonn = document.getElementById("kjonn");
-		if(!kjonn.checked){
+	} else if(felt === "kjonnM" || felt === "kjonnK" ){
+		//Hent value i kjonn-radio-knappene
+		let kjonnRadio = skjema.kjonn.value;
+		if(kjonnRadio === ""){
 			document.getElementById("kjonnFeil").classList.remove("gjemt");
+			document.getElementById("kjonnServerFeil").classList.remove("gjemt");
 			return false;
 		} else{
 			document.getElementById("kjonnFeil").classList.add("gjemt");
+			document.getElementById("kjonnServerFeil").classList.add("gjemt");
 			return true;
 		}
-	} else if(felt ===""){
-		//Håndterer feil som oppstår når valg av kjønn forandres
-		//Hvis dette oppstår er kjønn haket av, og dermed gyldig, så true returneres
-		return true;
 	} else{
 		//Håndtering for alle andre felt
 		let aktueltRegExp;
 		
 		if(felt === "fornavn"){
-			//aktueltRegExp = /^[A-ZÆØÅ]{1}[a-zA-ZæøåÆØÅ]{1}[a-zA-ZæøåÆØÅ -]{0,18}$/
 			aktueltRegExp = /^[A-ZÆØÅ]([- ]*[a-zA-ZæøåÆØÅ]){1,19}$/;
 		} else if(felt ==="etternavn"){
 			aktueltRegExp = /^[A-ZÆØÅ]{1}[a-zA-ZæøåÆØÅ]{1,19}$/;
@@ -72,14 +72,17 @@ function validerFelt(felt){
 		//Hent felt i skjema og tilhørende <p> for å skrive feilmeldinger
 		let aktueltFelt = document.getElementById(felt);
 		let feilFelt = felt+"Feil";
+		let serverFeilFelt = felt+"ServerFeil";
 		
 		if(!aktueltRegExp.test(aktueltFelt.value)){
-			document.getElementById(felt+"Feil").classList.remove("gjemt");
+			document.getElementById(feilFelt).classList.remove("gjemt");
+			document.getElementById(serverFeilFelt).classList.remove("gjemt");
 			document.getElementById(felt).classList.add("ugyldig");
 			return false;
 		} else{
-			document.getElementById(felt+"Feil").classList.add("gjemt");
+			document.getElementById(feilFelt).classList.add("gjemt");
 			document.getElementById(felt).classList.remove("ugyldig");
+			document.getElementById(serverFeilFelt).classList.add("gjemt");
 			return true;
 		}
 	}
@@ -97,7 +100,7 @@ skjema.addEventListener("submit", event => {
 	/*
 	 * Gå gjennom skjema - .elements gir array hvor fieldset er 0, og submit-knapper etc ligger etter aktuelle felt - sjekker derfor index 1-5
 	 */
-	for (let i = 1; i < 7; i++){
+	for (let i = 1; i < 8; i++){
 		if(!validerFelt(alleFelt[i].id)){
 			event.preventDefault();
 			ok = false;
@@ -109,8 +112,6 @@ skjema.addEventListener("submit", event => {
 
 //Legg til listener for passord-felt som validerer passord for hver input
 document.getElementById("passord").addEventListener("input", event =>{
-	//validerFelt("passord");
-	let forSvakt = /.{3,}/;
 	let middels = /([a-z]{4,})|([A-Z]{4,})|([0-9]{4,})/;
 	let sterkt = /[a-zA-Z0-9!”$%&’()*\+,\/;\[\]\\\^_`{|}~\+\$]{8,}/;
 	
