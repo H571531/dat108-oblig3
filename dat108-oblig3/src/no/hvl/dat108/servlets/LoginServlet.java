@@ -45,11 +45,11 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		String mobil = request.getParameter("mobil");
+		//String mobil = request.getParameter("mobil");
 		//String gittPassord = request.getParameter("passord");
 		
-		Deltaker deltaker = deltakerEAO.finnDeltaker(mobil);
-		if(LoginUtils.loggInn(request,deltaker,timeout)) {
+		//Deltaker deltaker = deltakerEAO.finnDeltaker(mobil);
+		if(LoginUtils.loggInn(request,timeout, deltakerEAO)) {
 			response.sendRedirect("DeltakerListeServlet");
 		}else {
 			response.sendRedirect("LoginServlet?feilPassord");

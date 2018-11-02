@@ -3,8 +3,8 @@ package no.hvl.dat108.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import no.hvl.dat108.eao.DeltakerEAO;
 import no.hvl.dat108.entities.Deltaker;
-import no.hvl.dat108.utils.PassordUtil;
 
 public class LoginUtils {
 
@@ -55,7 +55,10 @@ public class LoginUtils {
 		
 	}
 	
-	public static boolean loggInn(HttpServletRequest request,Deltaker deltaker, int timeout){
+	public static boolean loggInn(HttpServletRequest request , int timeout, DeltakerEAO deltakerEAO){
+		String mobil = request.getParameter("mobil");
+		Deltaker deltaker = deltakerEAO.finnDeltaker(mobil);
+		
 		if(!LoginUtils.loginOk(request, deltaker)) {
 			//response.sendRedirect("LoginServlet?feilPassord");
 			return false;

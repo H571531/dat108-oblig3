@@ -1,8 +1,8 @@
-package no.hvl.dat108.servlets;
-
-import java.util.List;
+package no.hvl.dat108.beans;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.text.StringEscapeUtils;
 
 import no.hvl.dat108.eao.DeltakerEAO;
 import no.hvl.dat108.entities.Deltaker;
@@ -32,14 +32,13 @@ public class Skjema {
 
 	public Skjema(HttpServletRequest request, DeltakerEAO deltakerEAO) {
 		
-		this.fornavn = request.getParameter("fornavn");
-		this.etternavn = request.getParameter("etternavn");
-		this.mobil = request.getParameter("mobil");
+		this.fornavn = StringEscapeUtils.escapeHtml4(request.getParameter("fornavn"));
+		this.etternavn = StringEscapeUtils.escapeHtml4(request.getParameter("etternavn"));
+		this.mobil = StringEscapeUtils.escapeHtml4(request.getParameter("mobil"));
 		this.passord = request.getParameter("passord");
 		this.passordRepetert = request.getParameter("passordRepetert");
 		this.kjonn = request.getParameter("kjonn");
 		this.deltakerEAO = deltakerEAO;
-		//Lagrer ikke passord
 		
 	}
 	
