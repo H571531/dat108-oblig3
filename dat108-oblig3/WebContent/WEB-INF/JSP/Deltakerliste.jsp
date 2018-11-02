@@ -12,7 +12,7 @@
 <title>Deltagerliste</title>
 </head>
 <body>
-	<h2>Deltagerliste</h2>
+	<h2>Deltakerliste</h2>
 	<table class="pure-table">
 		<tr bgcolor="#cccccc">
 			<th>Kjønn</th>
