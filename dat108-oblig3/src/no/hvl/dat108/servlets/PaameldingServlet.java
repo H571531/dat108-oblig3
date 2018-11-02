@@ -55,25 +55,17 @@ public class PaameldingServlet extends HttpServlet {
 			
 			Deltaker deltaker = skjema.lagDeltaker();
 			
-			//liste.add(deltaker);
 			
 			deltakerEAO.leggTilDeltaker(deltaker);
 			
-//			request.getSession().setAttribute("mobil", deltaker.getMobil());
-//			request.getSession().setMaxInactiveInterval(timeout);
-
 			LoginUtils.sessionStart(request, deltaker, timeout);
 			request.setAttribute("bekreftet", deltaker);
 			
 			request.getRequestDispatcher("WEB-INF/JSP/Bekreftelse.jsp").forward(request, response);
-			//response.sendRedirect("WEB-INF/JSP/Bekreftelse.jsp");
 		} else {
 			skjema.setupFeilMeldinger();
 			request.getSession().setAttribute("skjema", skjema);
 			response.sendRedirect("PaameldingServlet");
-		}
-		
-		
+		}		
 	}
-
 }

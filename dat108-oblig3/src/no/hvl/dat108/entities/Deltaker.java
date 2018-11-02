@@ -25,7 +25,7 @@ public class Deltaker {
 		this.kjonn = kjonn;
 
 		
-		//legge til i db?
+		
 	
 	}
 	

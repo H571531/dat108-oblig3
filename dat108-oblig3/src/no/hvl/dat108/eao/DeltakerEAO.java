@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import no.hvl.dat108.entities.Deltaker;
 
+
 @Stateless
 public class DeltakerEAO {
 	

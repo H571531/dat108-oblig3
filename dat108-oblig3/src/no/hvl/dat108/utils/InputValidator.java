@@ -13,8 +13,6 @@ public class InputValidator {
 		if(navn == null) {
 			return false;
 		}
-		//return navn.matches("^[a-zA-ZæøåÆØÅ]{2}[a-zA-ZæøåÆØÅ -]*${2,18}");
-		//return navn.matches("^[a-zA-ZæøåÆØÅ]{2}[a-zA-ZæøåÆØÅ -]*${2,18}");
 		return navn.matches("^[A-ZÆØÅ]([- ]*[a-zA-ZæøåÆØÅ]){1,19}$");
 	}
 	

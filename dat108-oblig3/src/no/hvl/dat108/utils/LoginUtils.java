@@ -57,7 +57,6 @@ public class LoginUtils {
 	
 	public static boolean loggInn(HttpServletRequest request,Deltaker deltaker, int timeout){
 		if(!LoginUtils.loginOk(request, deltaker)) {
-			//response.sendRedirect("LoginServlet?feilPassord");
 			return false;
 		} else {
 			//Forsøk å hente session - hvis den ikke finnes, ikke opprett ny

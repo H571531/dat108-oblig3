@@ -28,5 +28,4 @@ public class LogoutServlet extends HttpServlet {
             sesjon.invalidate();
         }
         request.getRequestDispatcher("WEB-INF/JSP/Logout.jsp").forward(request, response);	}
-
 }

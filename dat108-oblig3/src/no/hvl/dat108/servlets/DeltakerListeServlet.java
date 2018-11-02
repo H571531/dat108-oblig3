@@ -26,7 +26,7 @@ public class DeltakerListeServlet extends HttpServlet {
 	private List<Deltaker> liste;
 	
 	public void init() throws ServletException {
-		//liste = deltakerEAO.finnAlleDeltakere();
+		
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
