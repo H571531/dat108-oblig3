@@ -1,4 +1,4 @@
-package no.hvl.dat108;
+package no.hvl.dat108.servlets;
 
 import java.io.IOException;
 
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import no.hvl.dat108.eao.DeltakerEAO;
+import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.LoginUtils;
 
 /**

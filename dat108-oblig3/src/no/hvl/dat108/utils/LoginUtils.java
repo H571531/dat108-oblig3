@@ -3,7 +3,7 @@ package no.hvl.dat108.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import no.hvl.dat108.Deltaker;
+import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.PassordUtil;
 
 public class LoginUtils {
