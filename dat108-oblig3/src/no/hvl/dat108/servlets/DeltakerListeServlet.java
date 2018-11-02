@@ -37,17 +37,6 @@ public class DeltakerListeServlet extends HttpServlet {
 			liste = deltakerEAO.finnAlleDeltakere();
 			request.setAttribute("liste",liste);
 			request.getRequestDispatcher("WEB-INF/JSP/Deltakerliste.jsp").forward(request, response);
-			
-			
-		}
-		
+		}	
 	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-	}
-
 }
