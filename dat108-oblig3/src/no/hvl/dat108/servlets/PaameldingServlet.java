@@ -17,6 +17,8 @@ import no.hvl.dat108.utils.LoginUtils;
 
 /**
  * Servlet implementation class PaameldingServlet
+ * 
+ * @author Gruppe 22
  */
 @WebServlet("/PaameldingServlet")
 public class PaameldingServlet extends HttpServlet {
@@ -32,7 +34,9 @@ public class PaameldingServlet extends HttpServlet {
 		timeout = Integer.parseInt(getServletContext().getInitParameter("timeout"));
 		
 	}
-	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
@@ -41,7 +45,9 @@ public class PaameldingServlet extends HttpServlet {
 		
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Skjema skjema = new Skjema(request, deltakerEAO);
@@ -55,25 +61,17 @@ public class PaameldingServlet extends HttpServlet {
 			
 			Deltaker deltaker = skjema.lagDeltaker();
 			
-			//liste.add(deltaker);
 			
 			deltakerEAO.leggTilDeltaker(deltaker);
 			
-//			request.getSession().setAttribute("mobil", deltaker.getMobil());
-//			request.getSession().setMaxInactiveInterval(timeout);
-
 			LoginUtils.sessionStart(request, deltaker, timeout);
 			request.setAttribute("bekreftet", deltaker);
 			
 			request.getRequestDispatcher("WEB-INF/JSP/Bekreftelse.jsp").forward(request, response);
-			//response.sendRedirect("WEB-INF/JSP/Bekreftelse.jsp");
 		} else {
 			skjema.setupFeilMeldinger();
 			request.getSession().setAttribute("skjema", skjema);
 			response.sendRedirect("PaameldingServlet");
-		}
-		
-		
+		}		
 	}
-
 }

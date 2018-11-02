@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LogoutServlet
+ * 
+ * @author Gruppe 22
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
@@ -28,5 +30,4 @@ public class LogoutServlet extends HttpServlet {
             sesjon.invalidate();
         }
         request.getRequestDispatcher("WEB-INF/JSP/Logout.jsp").forward(request, response);	}
-
 }

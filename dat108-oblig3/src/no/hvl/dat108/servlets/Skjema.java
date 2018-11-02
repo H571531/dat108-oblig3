@@ -50,10 +50,6 @@ public class Skjema {
 	}
 	
 	private boolean isIkkeTidligereRegistrert() {
-//		List<Deltaker> liste = deltakerEAO.finnAlleDeltakere();
-//		return !( liste.stream()
-//				.map(d -> d.getMobil())
-//				.anyMatch(m -> m.equals(mobil)));
 		
 		return !deltakerEAO.deltakerFinnes(mobil);
 	}
