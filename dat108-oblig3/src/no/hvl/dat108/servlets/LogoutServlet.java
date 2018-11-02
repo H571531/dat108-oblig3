@@ -26,7 +26,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession sesjon = request.getSession(false);
         if (sesjon != null) {
         	sesjon.removeAttribute("mobil");
-        	sesjon.removeAttribute("bekreftet");
+        	//sesjon.removeAttribute("bekreftet");
             sesjon.invalidate();
         }
         request.getRequestDispatcher("WEB-INF/JSP/Logout.jsp").forward(request, response);	}

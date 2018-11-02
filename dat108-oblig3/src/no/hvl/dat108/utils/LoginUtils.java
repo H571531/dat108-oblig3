@@ -3,8 +3,8 @@ package no.hvl.dat108.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import no.hvl.dat108.eao.DeltakerEAO;
 import no.hvl.dat108.entities.Deltaker;
-import no.hvl.dat108.utils.PassordUtil;
 /**
  * Hjelpeklasse for inlogging
  * 
@@ -13,7 +13,7 @@ import no.hvl.dat108.utils.PassordUtil;
  */
 public class LoginUtils {
 	/**
-	 * Klasse for å bestemme overskrift på inlogging
+	 * Klasse for ï¿½ bestemme overskrift pï¿½ inlogging
 	 * 
 	 * @param request fra servlet
 	 * @return feilmelding/overskrift i inloggingskjerm
@@ -50,8 +50,6 @@ public class LoginUtils {
 			return false;
 		}
 		
-		//String mobil = request.getParameter("mobil");
-		
 		
 		//Funnet en eksisterende bruker => sjekk passord
 		String gittPassord = request.getParameter("passord");
@@ -83,7 +81,10 @@ public class LoginUtils {
 	 * @param timeout for sesjon invalidation
 	 * @return
 	 */
-	public static boolean loggInn(HttpServletRequest request,Deltaker deltaker, int timeout){
+	public static boolean loggInn(HttpServletRequest request , int timeout, DeltakerEAO deltakerEAO){
+		String mobil = request.getParameter("mobil");
+		Deltaker deltaker = deltakerEAO.finnDeltaker(mobil);
+		
 		if(!LoginUtils.loginOk(request, deltaker)) {
 			return false;
 		} else {
@@ -96,7 +97,7 @@ public class LoginUtils {
 	}
 
 	/**
-	 * Metode for å starte en sesjon med deltaker
+	 * Metode for ï¿½ starte en sesjon med deltaker
 	 * 
 	 * @param request fra servlet
 	 * @param deltaker som skal logges inn

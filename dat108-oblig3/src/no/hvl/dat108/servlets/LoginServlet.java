@@ -47,9 +47,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String mobil = request.getParameter("mobil");
-		Deltaker deltaker = deltakerEAO.finnDeltaker(mobil);
-		if(LoginUtils.loggInn(request,deltaker,timeout)) {
+		if(LoginUtils.loggInn(request,timeout, deltakerEAO)) {
 			response.sendRedirect("DeltakerListeServlet");
 		}else {
 			response.sendRedirect("LoginServlet?feilPassord");

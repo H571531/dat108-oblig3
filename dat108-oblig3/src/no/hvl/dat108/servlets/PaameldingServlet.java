@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import no.hvl.dat108.beans.Skjema;
 import no.hvl.dat108.eao.DeltakerEAO;
 import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.LoginUtils;
@@ -57,7 +58,6 @@ public class PaameldingServlet extends HttpServlet {
 		
 		if(skjema.isAltGyldig(deltakerEAO)) {
 			request.getSession().removeAttribute("skjema");
-			//TODO: opprette person, legge til db, legge til response? session?
 			
 			Deltaker deltaker = skjema.lagDeltaker();
 			
