@@ -3,7 +3,7 @@ package no.hvl.dat108.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import no.hvl.dat108.Deltaker;
+import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.PassordUtil;
 
 public class LoginUtils {
@@ -54,5 +54,38 @@ public class LoginUtils {
 		return !(sesjon == null || sesjon.getAttribute("mobil") == null);
 		
 	}
+	
+	public static boolean loggInn(HttpServletRequest request,Deltaker deltaker, int timeout){
+		if(!LoginUtils.loginOk(request, deltaker)) {
+			//response.sendRedirect("LoginServlet?feilPassord");
+			return false;
+		} else {
+			//Forsøk å hente session - hvis den ikke finnes, ikke opprett ny
+			sessionStart(request, deltaker, timeout);
+			
+			//Send videre til DeltakerListeServlet
+			return true;
+		}
+	}
 
+	/**
+	 * @param request
+	 * @param deltaker
+	 * @param timeout
+	 * @param sesjon
+	 */
+	public static void sessionStart(HttpServletRequest request, Deltaker deltaker, int timeout) {
+		HttpSession sesjon = request.getSession(false);
+		if(sesjon != null) {
+			//hvis session finnes, invalider session
+			sesjon.invalidate();
+		}
+		
+		//Opprett ny session
+		sesjon = request.getSession(true);
+		//"logg ut" etter antall sekunder gitt i web.xml
+		sesjon.setMaxInactiveInterval(timeout);
+		//Send videre mobilnummer
+		sesjon.setAttribute("mobil", deltaker.getMobil());
+	}
 }

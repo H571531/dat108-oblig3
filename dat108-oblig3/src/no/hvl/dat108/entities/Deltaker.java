@@ -1,4 +1,4 @@
-package no.hvl.dat108;
+package no.hvl.dat108.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

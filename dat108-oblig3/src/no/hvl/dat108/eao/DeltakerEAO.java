@@ -6,8 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
-import no.hvl.dat108.Deltaker;
+import no.hvl.dat108.entities.Deltaker;
 
 @Stateless
 public class DeltakerEAO {

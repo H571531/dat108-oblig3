@@ -1,4 +1,4 @@
-package no.hvl.dat108;
+package no.hvl.dat108.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import no.hvl.dat108.eao.DeltakerEAO;
+import no.hvl.dat108.entities.Deltaker;
+import no.hvl.dat108.utils.LoginUtils;
 
 
 /**
@@ -57,8 +59,10 @@ public class PaameldingServlet extends HttpServlet {
 			
 			deltakerEAO.leggTilDeltaker(deltaker);
 			
-			request.getSession().setAttribute("mobil", deltaker.getMobil());
-			request.getSession().setMaxInactiveInterval(timeout);
+//			request.getSession().setAttribute("mobil", deltaker.getMobil());
+//			request.getSession().setMaxInactiveInterval(timeout);
+
+			LoginUtils.sessionStart(request, deltaker, timeout);
 			request.setAttribute("bekreftet", deltaker);
 			
 			request.getRequestDispatcher("WEB-INF/JSP/Bekreftelse.jsp").forward(request, response);
