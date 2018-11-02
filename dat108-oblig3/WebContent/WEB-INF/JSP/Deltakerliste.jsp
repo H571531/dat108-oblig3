@@ -9,7 +9,7 @@
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-<title>Deltagerliste</title>
+<title>Deltakerliste</title>
 </head>
 <body>
 	<h2>Deltakerliste</h2>
