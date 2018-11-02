@@ -17,6 +17,8 @@ import no.hvl.dat108.utils.LoginUtils;
 
 /**
  * Servlet implementation class PaameldingServlet
+ * 
+ * @author Gruppe 22
  */
 @WebServlet("/PaameldingServlet")
 public class PaameldingServlet extends HttpServlet {
@@ -32,7 +34,9 @@ public class PaameldingServlet extends HttpServlet {
 		timeout = Integer.parseInt(getServletContext().getInitParameter("timeout"));
 		
 	}
-	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
@@ -41,7 +45,9 @@ public class PaameldingServlet extends HttpServlet {
 		
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Skjema skjema = new Skjema(request, deltakerEAO);
