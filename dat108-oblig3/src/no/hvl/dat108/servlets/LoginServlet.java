@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		//String gittPassord = request.getParameter("passord");
 		
 		Deltaker deltaker = deltakerEAO.finnDeltaker(mobil);
-		if(LoginUtils.loggetInn(request,deltaker,timeout)) {
+		if(LoginUtils.loggInn(request,deltaker,timeout)) {
 			response.sendRedirect("DeltakerListeServlet");
 		}else {
 			response.sendRedirect("LoginServlet?feilPassord");
