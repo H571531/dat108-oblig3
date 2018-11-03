@@ -17,7 +17,7 @@
 	<p>
 		&nbsp;&nbsp;&nbsp;${bekreftet.fornavn}<br />
 		&nbsp;&nbsp;&nbsp;${bekreftet.etternavn}<br />
-		&nbsp;&nbsp;&nbsp;${bekreftet.mobil}<br /> &nbsp;&nbsp;&nbsp;${bekreftet.kjonn}
+		&nbsp;&nbsp;&nbsp;${bekreftet.mobil}<br /> &nbsp;&nbsp;&nbsp;${(bekreftet.kjonn == 'k') ? "Kvinne" : "Mann" }
 	</p>
 	<a href="DeltakerListeServlet">Gå til deltagerlisten</a>
 </body>

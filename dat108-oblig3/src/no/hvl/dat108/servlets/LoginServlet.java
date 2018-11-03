@@ -8,14 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import no.hvl.dat108.eao.DeltakerEAO;
-import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.LoginUtils;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet for å håndtere innloggingsside
  * 
  * @author Gruppe 22
  */
@@ -33,9 +31,7 @@ public class LoginServlet extends HttpServlet {
 		timeout = Integer.parseInt(getServletContext().getInitParameter("timeout"));		
 	}
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		String loginBeskjed = LoginUtils.loginOverskrift(request);
 		request.setAttribute("beOmPassord", loginBeskjed);
@@ -43,11 +39,10 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/JSP/Login.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		if(LoginUtils.loggInn(request,timeout, deltakerEAO)) {
+		if(LoginUtils.loggInn(request, timeout, deltakerEAO)) {
+			//Alt ok, send videre til DeltakerListeServlet
 			response.sendRedirect("DeltakerListeServlet");
 		}else {
 			response.sendRedirect("LoginServlet?feilPassord");

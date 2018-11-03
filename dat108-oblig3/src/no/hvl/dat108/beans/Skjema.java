@@ -9,6 +9,13 @@ import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.InputValidator;
 import no.hvl.dat108.utils.PassordUtil;
 
+/**
+ * 
+ * @author Gruppe 22
+ * 
+ * Form bean for å håndtere påmeldingsskjema
+ *
+ */
 public class Skjema {
 	
 	private String fornavn;
@@ -44,16 +51,11 @@ public class Skjema {
 	
 	public boolean isAltGyldig(DeltakerEAO eao) {
 		
-		
+		//Validering av skjema gjøres i javascript i klient - gjør også på server
 		return isFornavnGyldig() && isEtternavnGyldig() && isMobilGyldig() && isIkkeTidligereRegistrert() && isPassordGyldig() && isPassordLike() && isKjonnGyldig();
 	}
 	
 	private boolean isIkkeTidligereRegistrert() {
-//		List<Deltaker> liste = deltakerEAO.finnAlleDeltakere();
-//		return !( liste.stream()
-//				.map(d -> d.getMobil())
-//				.anyMatch(m -> m.equals(mobil)));
-		
 		return !deltakerEAO.deltakerFinnes(mobil);
 	}
 
@@ -103,13 +105,13 @@ public class Skjema {
 		}
 		if(!isKjonnGyldig()) {
 			kjonn = "";
-			kjonnFeilmelding ="KjÃ¸nn ikke valgt!";
+			kjonnFeilmelding ="Kj&oslash;nn ikke valgt!";
 		}
 		if(!isPassordGyldig()) {
 			passordFeilmelding = "Ugyldig passord!";
 		}
 		if(!isPassordLike()) {
-			passordRepetertFeilmelding = "Passordene mÃ¥ vÃ¦re like!";
+			passordRepetertFeilmelding = "Passordene m&aring; v&aelig; like!";
 		}
 		//TODO: kjÃ¸nn, passord
 	}
@@ -167,11 +169,6 @@ public class Skjema {
 		return ny;
 	}
 
-	public void setupFeilMeldinger(String string) {
-		setupFeilMeldinger();
-		mobilFeilmelding = "Bruker finnes allerede";
-	}
-	
 	
 
 }

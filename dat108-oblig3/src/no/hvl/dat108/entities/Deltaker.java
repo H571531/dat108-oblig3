@@ -41,7 +41,7 @@ public class Deltaker {
 	
 	}
 	/**
-	 * Default konstruktør
+	 * Default konstruktør, trengs for JPA
 	 */
 	public Deltaker() {
 		

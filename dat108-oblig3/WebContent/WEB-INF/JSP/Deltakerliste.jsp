@@ -31,16 +31,6 @@
 			<td>${deltaker.mobil}</td>
 		</tr>
 		</c:forEach>
-		<!-- <tr bgcolor="#ffffff">
-			<td align="center">&#9794;</td>
-			<td>Arne Arnesen</td>
-			<td>901 23 456</td>
-		</tr>
-		<tr bgcolor="#ffffff">
-			<td align="center">&#9794;</td>
-			<td>Per Viskeler</td>
-			<td>112 23 344</td>
-		</tr> -->
 	</table>
 	<p>
 		<a href="LogoutServlet">Ferdig</a>

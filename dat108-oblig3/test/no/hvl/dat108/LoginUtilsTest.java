@@ -1,6 +1,7 @@
 package no.hvl.dat108;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -15,25 +16,26 @@ class LoginUtilsTest {
 	
 	 private MockHttpServletRequest request;
 	 private MockHttpServletResponse response;
-	 private MockHttpSession sesjon;
+	 //private MockHttpSession sesjon;
 
-	 Deltaker testDeltaker;
+	 
 	 
 	 @Before
 	 public void setup() {
 		 request = new MockHttpServletRequest();
 		 response = new MockHttpServletResponse();
-		 sesjon = new MockHttpSession();
+		 //sesjon = new MockHttpSession();
 		 
-		 testDeltaker = new Deltaker("12345678", "passordHash", "Fornavn", "Etternavn", "m");
 	 }
 	 
 	 @Test
 	 public void nyBrukerErIkkeInnlogget() {
+		 Deltaker testDeltaker= new Deltaker("12345678", "passordHash", "Fornavn", "Etternavn", "m");
 		 //sesjon.setAttribute("mobil", testDeltaker.getMobil());
 
-		 //request.setSession(sesjon);
-		 //assertFalse(LoginUtils.brukerErInnlogget(request));
+		 //request.setSession(new MockHttpSession());
+		 request.setAttribute("mobil", testDeltaker.getMobil());
+		 assertTrue(LoginUtils.brukerErInnlogget(request));
 	 }
 
 }

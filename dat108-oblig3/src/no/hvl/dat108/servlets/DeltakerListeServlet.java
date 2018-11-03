@@ -15,7 +15,7 @@ import no.hvl.dat108.entities.Deltaker;
 import no.hvl.dat108.utils.LoginUtils;
 
 /**
- * Servlet implementation class DeltakerListeServlet
+ * Servlet for visning av deltakerliste
  * 
  * @author Gruppe 22
  */
@@ -31,9 +31,7 @@ public class DeltakerListeServlet extends HttpServlet {
 		
 	}
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(!LoginUtils.brukerErInnlogget(request)) {

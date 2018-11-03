@@ -59,10 +59,15 @@ class InputValidatorTest {
 	}
 	
 	@Test
-	public void etternavnKanIkkeHaMellomromOgDash() {
+	public void etternavnKanIkkeHaMellomrom() {
 		assertFalse(InputValidator.isEtternavnGyldig("Ab ab"));
-		assertFalse(InputValidator.isEtternavnGyldig("Ab-ab"));
 		assertFalse(InputValidator.isEtternavnGyldig("ab ab"));
+		assertFalse(InputValidator.isEtternavnGyldig("Ab Ab Ab"));
+	}
+	
+	@Test
+	public void etternavnKanHaDash() {
+		assertTrue(InputValidator.isEtternavnGyldig("Ab-ab"));
 		assertFalse(InputValidator.isEtternavnGyldig("ab-ab"));
 		assertFalse(InputValidator.isEtternavnGyldig("Abc-"));
 	}

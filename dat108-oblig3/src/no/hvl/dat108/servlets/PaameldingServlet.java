@@ -1,7 +1,6 @@
 package no.hvl.dat108.servlets;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -17,7 +16,7 @@ import no.hvl.dat108.utils.LoginUtils;
 
 
 /**
- * Servlet implementation class PaameldingServlet
+ * Servlet for å håndtere påmeldingsskjema
  * 
  * @author Gruppe 22
  */
@@ -35,25 +34,17 @@ public class PaameldingServlet extends HttpServlet {
 		timeout = Integer.parseInt(getServletContext().getInitParameter("timeout"));
 		
 	}
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		
 		request.getRequestDispatcher("WEB-INF/JSP/Paamelding.jsp").forward(request, response);
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Skjema skjema = new Skjema(request, deltakerEAO);
-		
-		
 		
 		
 		if(skjema.isAltGyldig(deltakerEAO)) {

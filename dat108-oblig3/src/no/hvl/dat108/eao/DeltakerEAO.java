@@ -44,12 +44,12 @@ public class DeltakerEAO {
 	 * @return liste av deltakere
 	 */
 	public List<Deltaker> finnAlleDeltakere(){
-		//Gitt i oppgave at liste skal sorteres stigende pÃ¥ fornavn, deretter etternavn
+		//Gitt i oppgave at liste skal sorteres stigende på fornavn, deretter etternavn
 		List<Deltaker> deltakere = em.createQuery("SELECT d FROM Deltaker d ORDER BY d.fornavn, d.etternavn", Deltaker.class).getResultList();
 		return deltakere;
 	}
 	/**
-	 * Metode for å se om delkater finnes i databasen
+	 * Metode for å se om deltaker finnes i databasen
 	 * 
 	 * @param mobilnr som skal sjekkes
 	 * @return boolean om deltaker finnes eller ikke. 

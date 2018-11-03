@@ -1,5 +1,11 @@
 /**
- * 
+ * Script for å validere påmeldingsskjema
+ * Gitt i oppgave: 
+ * Fornavn mellom 2-20 tegn, kan inneholde bokstaver, bindestrek og mellomrom, første tegn skal være stor bokstav, 
+ * Etternavn 2-20 tegn, kan inneholde bokstaver og bindestrek, første tegn skal være stor bokstav
+ * Mobil eksakt 8 siffer, skal være unikt (sjekkes på server)
+ * Passord skal ha en minimumslengde (her satt til 4 tegn)
+ * Repetert passord må være likt passord
  */
 
 "use strict";
@@ -34,7 +40,6 @@ function validerFelt(felt){
 		if(!(passordRepetert.value === passord.value)){
 			document.getElementById("passordRepetertFeil").classList.remove("gjemt");
 			document.getElementById(felt).classList.add("ugyldig");
-			document.getElementById("passordRepetertServerFeil").classList.remove("gjemt");
 			return false;
 		} else{
 			document.getElementById("passordRepetertFeil").classList.add("gjemt");
@@ -48,7 +53,6 @@ function validerFelt(felt){
 		let kjonnRadio = skjema.kjonn.value;
 		if(kjonnRadio === ""){
 			document.getElementById("kjonnFeil").classList.remove("gjemt");
-			document.getElementById("kjonnServerFeil").classList.remove("gjemt");
 			return false;
 		} else{
 			document.getElementById("kjonnFeil").classList.add("gjemt");
@@ -62,7 +66,7 @@ function validerFelt(felt){
 		if(felt === "fornavn"){
 			aktueltRegExp = /^[A-ZÆØÅ]([- ]*[a-zA-ZæøåÆØÅ]){1,19}$/;
 		} else if(felt ==="etternavn"){
-			aktueltRegExp = /^[A-ZÆØÅ]{1}[a-zA-ZæøåÆØÅ]{1,19}$/;
+			aktueltRegExp = /^[A-ZÆØÅ]([-]*[a-zA-ZæøåÆØÅ]){1,19}$/;
 		} else if(felt === "mobil"){
 			aktueltRegExp = /^[1-9]{1}[0-9]{7}$/;
 		} else if(felt === "passord"){
@@ -76,7 +80,6 @@ function validerFelt(felt){
 		
 		if(!aktueltRegExp.test(aktueltFelt.value)){
 			document.getElementById(feilFelt).classList.remove("gjemt");
-			document.getElementById(serverFeilFelt).classList.remove("gjemt");
 			document.getElementById(felt).classList.add("ugyldig");
 			return false;
 		} else{
@@ -98,7 +101,7 @@ skjema.addEventListener("submit", event => {
 	let ok = true;
 	
 	/*
-	 * Gå gjennom skjema - .elements gir array hvor fieldset er 0, og submit-knapper etc ligger etter aktuelle felt - sjekker derfor index 1-5
+	 * Gå gjennom skjema - .elements gir array hvor fieldset er 0, og submit-knapper etc ligger etter aktuelle felt - sjekker derfor index 1-7
 	 */
 	for (let i = 1; i < 8; i++){
 		if(!validerFelt(alleFelt[i].id)){

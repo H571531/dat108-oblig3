@@ -7,10 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import no.hvl.dat108.utils.LogoutUtils;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet for å håndtere utloggingsside
  * 
  * @author Gruppe 22
  */
@@ -23,11 +24,8 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession sesjon = request.getSession(false);
-        if (sesjon != null) {
-        	sesjon.removeAttribute("mobil");
-        	//sesjon.removeAttribute("bekreftet");
-            sesjon.invalidate();
-        }
+		LogoutUtils.logout(request);
         request.getRequestDispatcher("WEB-INF/JSP/Logout.jsp").forward(request, response);	}
+
+	
 }
